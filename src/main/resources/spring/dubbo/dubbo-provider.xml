@@ -19,8 +19,11 @@
     <!-- 服务消费方 -->
     <dubbo:consumer timeout="30000" check="${dubbo.check}" retries="0"/>
     <!-- 和本地bean一样实现服务 -->
-    <bean id="demoService" class="com.xfl.provider.impl.DemoServiceImpl" />
+    <bean name="demoService" class="com.xfl.provider.impl.DemoServiceImpl"/>
+    <bean name="employeeService" class="com.xfl.provider.impl.EmployeeServiceImpl"/>
     <!-- 要暴露的服务接口 -->
     <dubbo:service interface="com.xfl.provider.service.IDemoService" registry="dubboProvider"
                    ref="demoService"  version="1.0.0"/>
+    <dubbo:service interface="com.xfl.provider.service.IEmployeeService" registry="dubboProvider"
+                   ref="employeeService" version="1.0.0"/>
 </beans>
